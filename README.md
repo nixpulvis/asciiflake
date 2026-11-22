@@ -73,6 +73,26 @@ $ rustflake --size 2 --id 1 --thickness 2 hello.rs
         ;     }     }
 ```
 
+`metaquineflake` prints `quineflake`, a quine drawn this way. The quine is a
+cargo script (which needs nightly) that depends on this repository's
+`fmt-n-quine` branch, so it builds itself anywhere. Running it prints its own
+source laid out on the size 5 flake with the next ID, which is also the program
+that prints the one after that. After all 36 IDs it's back where it started.
+
+```sh
+cargo run -q --bin metaquineflake > quineflake.rs
+chmod +x quineflake.rs
+./quineflake.rs > next.rs
+```
+
+This script runs one step at a time and prints the result. The first run makes
+`target/quineflake.rs` from the metaquine, and each run after that replaces it
+with the next one:
+
+```sh
+scripts/quineflake.sh
+```
+
 ## License
 
 MIT
