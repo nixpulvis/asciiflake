@@ -5,6 +5,7 @@ edition = "2024"
 description = "Draw random snowflakes in the terminal"
 license = "MIT"
 repository = "https://github.com/nixpulvis/asciiflake"
+default-run = "asciiflake"
 
 [dependencies]
 clap = { version = "4.6", features = ["derive"] }
